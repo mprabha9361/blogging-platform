@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mini Blog</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    #blog-form {
+      max-width: 600px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      background: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .post {
+      max-width: 600px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 15px;
+      border-left: 5px solid #007BFF;
+      border-radius: 4px;
+    }
+    .post h2 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>My Blog</h1>
+  <div id="blog-form">
+    <input type="text" id="title" placeholder="Post Title" />
+    <textarea id="content" rows="5" placeholder="Write your post here..."></textarea>
+    <button onclick="addPost()">Publish</button>
+  </div>
+  <div id="posts"></div>
+
+  <script>
+    function addPost() {
+      const title = document.getElementById('title').value.trim();
+      const content = document.getElementById('content').value.trim();
+      if (!title || !content) {
+        alert('Please fill out both fields.');
+        return;
+      }
+
+      const post = document.createElement('div');
+      post.className = 'post';
+      post.innerHTML = `<h2>${title}</h2><p>${content}</p>`;
+      document.getElementById('posts').prepend(post);
+
+      document.getElementById('title').value = '';
+      document.getElementById('content').value = '';
+    }
+  </script>
+</body>
+</html>
